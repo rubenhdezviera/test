@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title></title>
+ <meta name="description" content="">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<script runat="server" language="javascript">
+Platform.Load("Core","1.1.1");
+ 
+var link = "https://domingoalonsogroup.com/unsub/Id=?1234";
+var mytoken = "mK8Sac9QegZtdsrx6wObpFaB89Bj1ubm";
+var url = "https://api.short.cm/links/public";  
+var headerNames = ["accept","authorization"]; 
+var contentType = "application/json";
+var headerValues = ["application/json" ,mytoken];  
+var data = {
+    "domain":"i58.short.gy",
+    "originalURL": link,
+    "allowDuplicates":false };   
+  
+  try { 
+var response = HTTP.Post(url, contentType, data, headerNames, headerValues);
+  
+var json = Platform.Function.ParseJSON(response);
+
+Platform.Function.Write(json.URL); 
+ } 
+  catch(e)
+  {Platform.Function.Write(Stringify(e));}
+</script>
+
+</body>
+</html>
